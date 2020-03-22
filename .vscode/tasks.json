@@ -1,0 +1,57 @@
+
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Activate env",
+            "type": "shell",
+            "windows": {
+                "command": ".\\batch\\activate_env.bat"
+            },
+            "group": "build",
+            "problemMatcher": [],
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            }
+        },
+        {
+            "label": "Module list",
+            "type": "shell",
+            "windows" : {
+                "command": ".\\batch\\module_list.bat"
+            },
+            "group": "build",
+            "problemMatcher" : [],
+            "presentation": {
+                "echo": true,
+                "reveal": "never",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            }
+        },
+        {
+            "label": "Requirements freezing",
+            "type": "shell",
+            "windows" : {
+                "command": ".\\batch\\requirements_freezing.bat"
+            },
+            "group": "build",
+            "problemMatcher" : [],
+            "presentation": {
+                "echo": true,
+                "reveal": "never",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            }
+        }
+    ]
+}
