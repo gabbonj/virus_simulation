@@ -1,5 +1,6 @@
 from .. import imports
 
+
 class Scene:
 
     def __init__(self, width, height, people=[]):
@@ -35,10 +36,8 @@ class Scene:
     def avoidCollisions(self):
         for p in self.people:
             a = p.position
-            if a[0] > self.width or \
-               a[0] < 0 or \
-               a[1] > self.height or \
-               a[1] < 0:
+            if a[0] > self.width or a[0] < 0 or \
+               a[1] > self.height or a[1] < 0:
                 p.changeDirection()
             for q in self.people:
                 if p == q :
@@ -55,7 +54,14 @@ class Scene:
                         if q.disease.sickness and imports.random() < q.disease.spread_rate:
                             p.infect()
 
+    def kill(self):
+        for p in self.people:
+            if p.disease.percentage >= 1:
+                self.people.remove(p)
+                print('morto')
+
     def update(self):
+        self.kill()
         self.avoidCollisions()
         for p in self.people:
             p.update()

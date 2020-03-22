@@ -1,5 +1,6 @@
 from .. import imports
 
+
 class Pearson:
 
     def __init__(self, position, velocity, angle, health=None, disease=None):
@@ -26,9 +27,24 @@ class Pearson:
         self.position[1] += imports.np.cos(self.angle) * imports.settings.pearson_size
     
     def update(self):
+        random_factor = imports.random()
+
         move = imports.np.array([
             imports.np.sin(self.angle) * self.velocity,
             imports.np.cos(self.angle) * self.velocity
         ])
         newposition = imports.np.array(self.position) + move
         self.position = newposition.astype('int64').tolist()
+
+        if self.disease.sickness:
+            if random_factor > self.health.strongness:
+                self.disease.percentage += imports.settings.disease_evolution
+            else:
+                self.disease.percentage -= imports.settings.disease_evolution
+
+            if self.disease.percentage > 1:
+                self.disease.percentage = 1
+            elif self.disease.percentage <= 0:
+                self.disease.percentage = .5
+                self.disease.sickness = False
+                print('guarito')

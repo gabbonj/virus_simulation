@@ -19,12 +19,13 @@ def start_screen(scene):
                 imports.settings.running = False
 
         screen.fill(imports.settings.colours['black'])
+        scene.update()
 
         for p in scene.people:
 
             color = imports.settings.colours['white']
             if p.disease.sickness:
-                color = imports.settings.colours['red']
+                color = imports.settings.pearson_gradient.get_color(p.disease.percentage)
             else:
                 color = imports.settings.colours['green']
 
@@ -34,5 +35,4 @@ def start_screen(scene):
                                imports.settings.pearson_size)
 
         pygame.display.update()
-        scene.update()
         sleep(.01)

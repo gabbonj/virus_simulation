@@ -1,8 +1,9 @@
 from .. import imports
 
+
 class Disease:
     
-    def __init__(self, sickness=False, spread_rate=.7, percentage=.1):
+    def __init__(self, sickness=False, spread_rate=.7, percentage=.5):
         assert isinstance(sickness, bool)
         assert isinstance(spread_rate, float)
         assert isinstance(percentage, float)

@@ -4,6 +4,7 @@ import numpy as np
 import pygame
 
 from .screen.screen import start_screen
+from .classes.gradient import Gradient
 from .classes.disease import Disease
 from .classes.pearson import Pearson
 from .classes.health import Health
