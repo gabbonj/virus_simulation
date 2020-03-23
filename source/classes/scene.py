@@ -23,7 +23,7 @@ class Scene:
                 imports.randint(imports.settings.pearson_size, self.width),
                 imports.randint(imports.settings.pearson_size, self.height)
             ]
-            newvelocity= imports.randint(imports.settings.max_speed, imports.settings.max_speed)
+            newvelocity= imports.randint(imports.settings.min_speed, imports.settings.max_speed)
             newangle = imports.randint(0, 360) * 3.14 / 180
             newpeason = imports.Pearson(newposition, newvelocity, newangle)
             self.people.append(newpeason)

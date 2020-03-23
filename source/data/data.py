@@ -9,3 +9,4 @@ def start_data():
 
     print(1)
     imports.settings.data = listener.data
+    imports.plot_data()

@@ -12,5 +12,6 @@ from .classes.disease import Disease
 from .classes.pearson import Pearson
 from .data.listener import Listener
 from .classes.health import Health
+from .data.plotter import plot_data
 from .data.data import start_data
 from .classes.scene import Scene

@@ -45,6 +45,8 @@ class Pearson:
             if self.disease.percentage > 1:
                 self.disease.percentage = 1
             elif self.disease.percentage <= 0:
-                self.disease.percentage = .5
+                self.disease.spread_rate = imports.settings.spread_rate_calback
+                self.disease.percentage = imports.settings.disease_callback
                 self.disease.sickness = False
+                self.health.strongness += imports.settings.health_callback
                 print('guarito')
