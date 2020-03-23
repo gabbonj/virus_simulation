@@ -1,13 +1,11 @@
 from .. import imports
-from time import sleep 
 
 pygame = imports.pygame
 
-def start_screen(scene):
-    assert isinstance(scene, imports.Scene)
+def start_screen():
+    scene = imports.settings.main_scene
     pygame.init()
     screen = pygame.display.set_mode((scene.width, scene.height))
-    imports.settings.running = True
 
     while imports.settings.running: 
 
@@ -35,4 +33,4 @@ def start_screen(scene):
                                imports.settings.pearson_size)
 
         pygame.display.update()
-        sleep(.01)
+        imports.sleep(.01)
