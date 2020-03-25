@@ -1,5 +1,7 @@
 from .. import imports
+
 plt = imports.plt
+
 
 def plot_data():
     for item in imports.settings.data.items():

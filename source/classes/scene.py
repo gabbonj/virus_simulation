@@ -49,9 +49,9 @@ class Scene:
                         if d < imports.settings.hibox_radius:
                             p.changeDirection()
                             q.changeDirection()
-                        if p.disease.sickness and imports.random() < p.disease.spread_rate:
+                        if p.disease.sickness and imports.random() < p.disease.spread_rate and not q.health.immune:
                             q.infect()
-                        if q.disease.sickness and imports.random() < q.disease.spread_rate:
+                        if q.disease.sickness and imports.random() < q.disease.spread_rate and not p.health.immune:
                             p.infect()
 
     def kill(self):

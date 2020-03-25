@@ -49,4 +49,5 @@ class Pearson:
                 self.disease.percentage = imports.settings.disease_callback
                 self.disease.sickness = False
                 self.health.strongness += imports.settings.health_callback
+                self.health.immune = True
                 print('guarito')

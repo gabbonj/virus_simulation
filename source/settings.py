@@ -8,6 +8,11 @@ colours = {
     'blue': (0, 0, 255)
 }
 data = {}
+
+title_font = ("Courier", 20)
+section_font = ("Courier", 15)
+text_font = ("Courier", 10)
+
 running = False
 main_scene = None
 sample_rate = 1
@@ -21,4 +26,4 @@ min_speed = 0
 disease_evolution = .01
 disease_callback = .1
 health_callback = .3
-spread_rate_calback = 0
+spread_rate_calback = 1
