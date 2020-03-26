@@ -4,8 +4,10 @@ plt = imports.plt
 
 
 def plot_data():
+    i = 0
     for item in imports.settings.data.items():
         assert isinstance(item[1], list)
+        plt.figure(i)
         y = list(item[1])
         x = [x for x in range(len(item[1]))]
         if len(x) == len(y):
@@ -16,4 +18,5 @@ def plot_data():
         plt.title(item[0])
         plt.grid(color='c', linestyle=':')
         plt.legend(shadow=True)
-        plt.show()
+        i += 1
+    plt.show()
