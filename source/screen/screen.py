@@ -6,9 +6,12 @@ def start_screen():
     scene = imports.settings.main_scene
     pygame.init()
     screen = pygame.display.set_mode((scene.width, scene.height))
+    listener_thread = imports.threading.Thread(target=imports.listen_data, daemon=True, name='Listener')
+    
+    listener_thread.start()
+
 
     while imports.settings.running: 
-
         for event in pygame.event.get():
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_ESCAPE:
@@ -29,7 +32,7 @@ def start_screen():
 
             pygame.draw.circle(screen,
                                color,
-                               p.position,
+                               [int(p.position[0]), int(p.position[1])],
                                imports.settings.pearson_size)
 
         pygame.display.update()

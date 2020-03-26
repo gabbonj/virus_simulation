@@ -22,33 +22,54 @@ class Interface(tk.Frame):
         dimention_label = tk.Label(self, text='Scene dimention:', font=imports.settings.text_font)
         dimention_label.grid(row=row, column=0)
 
-        width_entry = tk.Entry(self, width=5)
-        width_entry.insert(tk.END, '300')
-        width_entry.grid(row=row, column=1)
+        self.width_entry = tk.Entry(self, width=5)
+        self.width_entry.insert(tk.END, '300')
+        self.width_entry.grid(row=row, column=1)
 
-        height_entry = tk.Entry(self, width=5)
-        height_entry.insert(tk.END, '300')
-        height_entry.grid(row=row, column=2)
+        self.height_entry = tk.Entry(self, width=5)
+        self.height_entry.insert(tk.END, '300')
+        self.height_entry.grid(row=row, column=2)
 
         row += 1
 
         population_label = tk.Label(self, text='Scene pupulation:', font=imports.settings.text_font)
         population_label.grid(row=row, column=0)
 
-        population_entry = tk.Entry(self, width=5)
-        population_entry.insert(tk.END, 100)
-        population_entry.grid(row=row, column=1)
+        self.population_entry = tk.Entry(self, width=5)
+        self.population_entry.insert(tk.END, 100)
+        self.population_entry.grid(row=row, column=1)
 
         row += 1
 
         infects_label = tk.Label(self, text='Initial infects:', font=imports.settings.text_font)
         infects_label.grid(row=row, column=0)
 
-        infects_entry = tk.Entry(self, width=5)
-        infects_entry.insert(tk.END, 5)
-        infects_entry.grid(row=row, column=1)
+        self.infects_entry = tk.Entry(self, width=5)
+        self.infects_entry.insert(tk.END, 5)
+        self.infects_entry.grid(row=row, column=1)
 
         row += 1
 
+        start_button = tk.Button(self, text='Start simulation', command=self.start_simulation)
+        start_button.grid(row=row, column=0)
+        plot_button = tk.Button(self, text='Plot data', command=self.plot_data)
+        plot_button.grid(row=row, column=1)
+
+        row += 1
 
         self.pack()
+
+    def start_simulation(self):
+        screen_thread = imports.threading.Thread(target=imports.start_screen, daemon=True, name='Screen')
+        imports.settings.running = True
+        imports.settings.main_scene = imports.Scene(int(self.width_entry.get()), int(self.height_entry.get()))
+        imports.settings.main_scene.addRandomPeople(100)
+        imports.settings.main_scene.infectRandom(5)
+        screen_thread.start()
+
+    def plot_data(self):
+        try:
+            plotter_thread = imports.threading.Thread(target=imports.plot_data, daemon=True, name='Plotter')
+            plotter_thread.start()
+        except:
+            print('pino')

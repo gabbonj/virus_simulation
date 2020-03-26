@@ -13,8 +13,9 @@ title_font = ("Courier", 20)
 section_font = ("Courier", 15)
 text_font = ("Courier", 10)
 
-running = False
+app = None
 main_scene = None
+running = False
 sample_rate = 1
 
 pearson_gradient = Gradient(colours['green'], colours['red'])
